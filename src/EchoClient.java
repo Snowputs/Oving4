@@ -17,10 +17,10 @@ public class EchoClient {
         DatagramPacket packet
                 = new DatagramPacket(buf, buf.length, address, 4445);
         socket.send(packet);
-        packet = new DatagramPacket(buf, buf.length);
-        socket.receive(packet);
+        DatagramPacket innpacket = new DatagramPacket(buf, buf.length);
+        socket.receive(innpacket);
         String received = new String(
-                packet.getData(), 0, packet.getLength());
+                innpacket.getData(), 0, innpacket.getLength());
         return received;
     }
 
